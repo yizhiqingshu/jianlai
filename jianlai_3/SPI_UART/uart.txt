@@ -1,0 +1,356 @@
+#include "UART_1.h"
+char DMA_Rece_Buf[30];
+void UART2_Config(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+  NVIC_InitTypeDef NVIC_InitStructure;
+
+  NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
+
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+
+	// 将USART Tx的GPIO配置为推挽复用模式
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+  // 将USART Rx的GPIO配置为浮空输入模式
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+	// 配置串口的工作参数
+	// 配置波特率
+	USART_InitStructure.USART_BaudRate = DEBUG_USART_BAUDRATE;
+	// 配置 针数据字长
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	// 配置停止位
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	// 配置校验位
+	USART_InitStructure.USART_Parity = USART_Parity_No ;
+		// 配置硬件流控制
+		USART_InitStructure.USART_HardwareFlowControl = 
+		USART_HardwareFlowControl_None;
+		// 配置工作模式，收发一起
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		// 完成串口的初始化配置
+		 USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);//开启空闲中断
+		USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE);   //使能串口1 DMA接收
+		USART_Init(USART2, &USART_InitStructure);	
+		 USART_Cmd(USART2, ENABLE); 
+		 
+		  DMA_InitTypeDef DMA_InitStructure;
+
+		  DMA_DeInit(DMA1_Channel6);   //将DMA的通道6寄存器重设为缺省值  串口1对应的是DMA通道5
+		  DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&(USART2->DR); //DMA外设usart基地址
+		  DMA_InitStructure.DMA_MemoryBaseAddr = (u32)DMA_Rece_Buf;  //DMA内存基地址
+		  DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;  //数据传输方向，从外设读取发送到内存
+		  DMA_InitStructure.DMA_BufferSize = DMA_Rec_Len;  //DMA通道的DMA缓存的大小
+		  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; //外设地址寄存器不变
+		  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;  //内存地址寄存器递增
+		  DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; //数据宽度为8位
+		  DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte; //数据宽度为8位
+		  DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;  //工作在正常缓存模式
+		  DMA_InitStructure.DMA_Priority = DMA_Priority_Medium; //DMA通道 x拥有中优先级 
+		  DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  //DMA通道x没有设置为内存到内存传输
+		  DMA_Init(DMA1_Channel6, &DMA_InitStructure);  //根据DMA_InitStruct中指定的参数初始化DMA的通道
+	 
+		DMA_Cmd(DMA1_Channel6, ENABLE);  //正式驱动DMA传输
+			printf("chuankouzhengchang ");
+
+
+}
+
+void MYDMA_Enable(DMA_Channel_TypeDef*DMA_CHx)
+{ 
+    DMA_Cmd(DMA_CHx, DISABLE );  //关闭USART1 TX DMA1所指示的通道    
+    DMA_SetCurrDataCounter(DMA_CHx,DMA_Rec_Len);//DMA通道的DMA缓存的大小
+    DMA_Cmd(DMA_CHx, ENABLE);  //打开USART1 TX DMA1所指示的通道  
+}  
+#if UART1_PRINTF
+void USART_Config(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+
+	// 打开串口GPIO的时钟
+	DEBUG_USART_GPIO_APBxClkCmd(DEBUG_USART_GPIO_CLK, ENABLE);
+	
+	// 打开串口外设的时钟
+	DEBUG_USART_APBxClkCmd(DEBUG_USART_CLK, ENABLE);
+
+	// 将USART Tx的GPIO配置为推挽复用模式
+	GPIO_InitStructure.GPIO_Pin = DEBUG_USART_TX_GPIO_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(DEBUG_USART_TX_GPIO_PORT, &GPIO_InitStructure);
+
+  // 将USART Rx的GPIO配置为浮空输入模式
+	GPIO_InitStructure.GPIO_Pin = DEBUG_USART_RX_GPIO_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_Init(DEBUG_USART_RX_GPIO_PORT, &GPIO_InitStructure);
+	
+	// 配置串口的工作参数
+	// 配置波特率
+	USART_InitStructure.USART_BaudRate = DEBUG_USART_BAUDRATE;
+	// 配置 针数据字长
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	// 配置停止位
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	// 配置校验位
+	USART_InitStructure.USART_Parity = USART_Parity_No ;
+	// 配置硬件流控制
+	USART_InitStructure.USART_HardwareFlowControl = 
+	USART_HardwareFlowControl_None;
+	// 配置工作模式，收发一起
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	// 完成串口的初始化配置
+	USART_Init(DEBUG_USARTx, &USART_InitStructure);	
+	
+	// 使能串口
+	USART_Cmd(DEBUG_USARTx, ENABLE);	    
+}
+
+
+ 
+///重定向c库函数printf到串口，重定向后可使用printf函数
+int fputc(int ch, FILE *f)
+{
+		/* 发送一个字节数据到串口 */
+		USART_SendData(DEBUG_USARTx, (uint8_t) ch);
+		
+		/* 等待发送完毕 */
+		while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET);		
+	
+		return (ch);
+}
+
+///重定向c库函数scanf到串口，重写向后可使用scanf、getchar等函数
+int fgetc(FILE *f)
+{
+		/* 等待串口输入数据 */
+		while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_RXNE) == RESET);
+
+		return (int)USART_ReceiveData(DEBUG_USARTx);
+}
+
+#endif
+//void My_USART1_Init(void)
+//{
+//	GPIO_InitTypeDef GPIO_InitStrue;
+//	USART_InitTypeDef USART_InitStrue;
+//	NVIC_InitTypeDef NVIC_InitStrue;
+//	
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);//GPIO端口使能
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);//串口端口使能
+//	
+//	GPIO_InitStrue.GPIO_Mode=GPIO_Mode_AF_PP;
+//	GPIO_InitStrue.GPIO_Pin=GPIO_Pin_9;
+//	GPIO_InitStrue.GPIO_Speed=GPIO_Speed_10MHz;
+//	GPIO_Init(GPIOA,&GPIO_InitStrue);
+//	
+//	GPIO_InitStrue.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+//	GPIO_InitStrue.GPIO_Pin=GPIO_Pin_10;
+//	GPIO_InitStrue.GPIO_Speed=GPIO_Speed_10MHz;
+//	GPIO_Init(GPIOA,&GPIO_InitStrue);
+//	
+//	USART_InitStrue.USART_BaudRate=115200;
+//	USART_InitStrue.USART_HardwareFlowControl=USART_HardwareFlowControl_None;
+//	USART_InitStrue.USART_Mode=USART_Mode_Tx|USART_Mode_Rx;
+//	USART_InitStrue.USART_Parity=USART_Parity_No;
+//	USART_InitStrue.USART_StopBits=USART_StopBits_1;
+//	USART_InitStrue.USART_WordLength=USART_WordLength_8b;
+//	
+//	USART_Init(USART1,&USART_InitStrue);//
+//	
+//	USART_Cmd(USART1,ENABLE);//使能串口1
+//	
+//	USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);//开启接收中断
+//	
+//	NVIC_InitStrue.NVIC_IRQChannel=USART1_IRQn;
+//	NVIC_InitStrue.NVIC_IRQChannelCmd=ENABLE;
+//	NVIC_InitStrue.NVIC_IRQChannelPreemptionPriority=1;
+//	NVIC_InitStrue.NVIC_IRQChannelSubPriority=0;
+//	NVIC_Init(&NVIC_InitStrue);
+//	
+//}
+// 
+void USART1_IRQHandler(void)
+{
+	u8 res;
+	 if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+ {
+     res= USART_ReceiveData(USART1); 
+     USART_SendData(USART1,res);   
+  }
+}
+ 
+
+ 
+#if UART2_PRINTF 
+///重定向c库函数printf到串口，重定向后可使用printf函数
+//int fputc(int ch, FILE *f)
+//{
+//		/* 发送一个字节数据到串口 */
+//		USART_SendData(USART2, (uint8_t) ch);
+//		
+//		/* 等待发送完毕 */
+//		while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);		
+//	
+//		return (ch);
+//}
+
+/////重定向c库函数scanf到串口，重写向后可使用scanf、getchar等函数
+//int fgetc(FILE *f)
+//{
+//		/* 等待串口输入数据 */
+//		while (USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET);
+
+//		return (int)USART_ReceiveData(USART2);
+//}
+
+#endif
+
+//uint8_t* OpenMV_Rx_BUF[8]={0};
+//void USART2_IRQHandler(void)
+//{
+//	
+//	static uint8_t rebuf[8]={0},i=0;
+//	
+//	if(USART_GetITStatus(USART2,USART_IT_RXNE) != RESET)
+//	{
+//		rebuf[i++]=USART_ReceiveData(USART2);	
+//		if(rebuf[0]!=0xb3)//帧头
+//			i=0;
+//	  if((i==2)&&(rebuf[1]!=0xb3))//判断帧头
+//			i=0;
+//		if(i>=7)//代表一帧数据完毕
+//		{
+//			memcpy(OpenMV_Rx_BUF,rebuf,i);
+//			
+//			i = 0;
+// 
+//		}
+//		USART_ClearFlag(USART2,USART_FLAG_RXNE);
+//	}	
+//}
+
+
+void Usart2_Send(char *buf,u8 len)
+{
+    u8 t;
+    for(t=0;t<len;t++)      //循环发送数据
+    {          
+        while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);   
+        USART_SendData(USART1,buf[t]);
+    }    
+    while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);     
+}
+uint16_t uart2_zhuanhuan_int;
+uint16_t Usart2_Rec_Cnt=0;
+uint8_t* OpenMV_Rx_BUF[8]={0};
+void USART2_IRQHandler(void)
+{
+	
+	
+	if(USART_GetITStatus(USART2,USART_IT_IDLE) != RESET)
+	{
+          USART_ReceiveData(USART2);//读取数据注意：这句必须要，否则不能够清除中断标志位。
+          Usart2_Rec_Cnt =DMA_Rec_Len-DMA_GetCurrDataCounter(DMA1_Channel6); //算出接本帧数据长度
+		 //Usart2_Rec_Cnt =DMA_Rec_Len-sizeof(DMA_Rece_Buf); //算出接本帧数据长度
+
+		  printf ("Thelenght:%d\r\n",Usart2_Rec_Cnt);
+	      uart2_zhuanhuan_int=atoi(DMA_Rece_Buf);
+		  printf ("The data:%d\r\n",uart2_zhuanhuan_int);
+		  printf("shuju");
+          Usart2_Send(DMA_Rece_Buf,DMA_Rec_Len);
+	}
+		 USART_ClearITPendingBit(USART2,USART_IT_IDLE);         //清除中断标志
+         MYDMA_Enable(DMA1_Channel6);                  //恢复DMA指针，等待下一次的接收
+
+}	
+
+void Delay_us(u32 i)
+{
+    u32 temp;
+    SysTick->LOAD=9*i;         //设置重装数值, 72MHZ时
+    SysTick->CTRL=0X01;         //使能，减到零是无动作，采用外部时钟源
+    SysTick->VAL=0;                //清零计数器
+    do
+    {
+        temp=SysTick->CTRL;           //读取当前倒计数值
+    }
+    while((temp&0x01)&&(!(temp&(1<<16))));     //等待时间到达
+    SysTick->CTRL=0;    //关闭计数器
+    SysTick->VAL=0;        //清空计数器
+}
+
+
+void Delay_ms(u32 i)
+{
+    u32 temp;
+    SysTick->LOAD=9000*i;      //设置重装数值, 72MHZ时
+    SysTick->CTRL=0X01;        //使能，减到零是无动作，采用外部时钟源
+    SysTick->VAL=0;            //清零计数器
+    do
+    {
+        temp=SysTick->CTRL;       //读取当前倒计数值
+    }
+    while((temp&0x01)&&(!(temp&(1<<16))));    //等待时间到达
+    SysTick->CTRL=0;    //关闭计数器
+    SysTick->VAL=0;        //清空计数器
+}
+/*****************  发送一个字符 **********************/
+void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch)
+{
+	/* 发送一个字节数据到USART */
+	USART_SendData(pUSARTx,ch);
+		
+	/* 等待发送数据寄存器为空 */
+	while (USART_GetFlagStatus(pUSARTx, USART_FLAG_TXE) == RESET);	
+}
+
+/*****************  发送字符串 **********************/
+void Usart_SendString( USART_TypeDef * pUSARTx, char *str)
+{
+	unsigned int k=0;
+  do 
+  {
+      Usart_SendByte( pUSARTx, *(str + k) );
+      k++;
+  } while(*(str + k)!='\0');
+  
+  /* 等待发送完成 */
+  while(USART_GetFlagStatus(pUSARTx,USART_FLAG_TC)==RESET)
+  {}
+}
+
+/*****************  发送一个16位数 **********************/
+void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch)
+{
+	uint8_t temp_h, temp_l;
+	
+	/* 取出高八位 */
+	temp_h = (ch&0XFF00)>>8;
+	/* 取出低八位 */
+	temp_l = ch&0XFF;
+	
+	/* 发送高八位 */
+	USART_SendData(pUSARTx,temp_h);	
+	while (USART_GetFlagStatus(pUSARTx, USART_FLAG_TXE) == RESET);
+	
+	/* 发送低八位 */
+	USART_SendData(pUSARTx,temp_l);	
+	while (USART_GetFlagStatus(pUSARTx, USART_FLAG_TXE) == RESET);	
+}
+
+
