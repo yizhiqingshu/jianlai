@@ -2,7 +2,7 @@
 ..\..\output\pwm_ic.o: ..\..\User\TIM\PWM_IC.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\pwm_ic.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\pwm_ic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\pwm_ic.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -29,3 +29,5 @@
 ..\..\output\pwm_ic.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\pwm_ic.o: ..\..\Libraries\FWlib\inc\misc.h
+..\..\output\pwm_ic.o: ..\..\User\usart\bsp_usart.h
+..\..\output\pwm_ic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

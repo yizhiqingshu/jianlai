@@ -11,7 +11,7 @@ float ADC_ConvertedValueLocal_Single;
   */
 	
 	
-void TIM4_ADC_Init(void)
+static void TIM4_ADC_Init(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;

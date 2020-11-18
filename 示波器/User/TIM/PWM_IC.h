@@ -2,7 +2,7 @@
 #define  _PWM_IC_H
 //tim1
 #include "stm32f10x.h"
-
+#include "bsp_usart.h"
 #define            ADVANCE_TIM                   TIM1
 #define            ADVANCE_TIM_APBxClock_FUN     RCC_APB2PeriphClockCmd
 #define            ADVANCE_TIM_CLK               RCC_APB2Periph_TIM1

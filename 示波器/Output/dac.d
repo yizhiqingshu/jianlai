@@ -2,7 +2,7 @@
 ..\..\output\dac.o: ..\..\User\AD_DA\DAC.h
 ..\..\output\dac.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\dac.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\dac.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\dac.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\dac.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\dac.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\dac.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h

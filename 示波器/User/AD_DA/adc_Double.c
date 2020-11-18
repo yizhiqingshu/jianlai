@@ -21,9 +21,9 @@ static void ADCx_GPIO_Config(void)
 	
 	// 配置 ADC IO 引脚模式
 	GPIO_InitStructure.GPIO_Pin = 	ADC_PIN1|
-																		ADC_PIN2;
-//																		|ADC_PIN3|
-//																		ADC_PIN4|
+																		ADC_PIN2
+																		|ADC_PIN3|
+																		ADC_PIN4;
 //																		ADC_PIN5|
 //																		ADC_PIN6;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
@@ -61,7 +61,7 @@ static void ADCx_GPIO_Config(void)
 //}
 
 
-void TIMx_ADC_Init(void)
+static void TIMx_ADC_Init(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
@@ -179,8 +179,8 @@ static void ADCx_Mode_Config(void)
 	// 配置ADC 通道的转换顺序和采样时间
 	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL1, 1, ADC_SampleTime_55Cycles5);
 	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL2, 2, ADC_SampleTime_55Cycles5);
-//	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL3, 3, ADC_SampleTime_55Cycles5);
-//	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL4, 4, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL3, 3, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL4, 4, ADC_SampleTime_55Cycles5);
 //	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL5, 5, ADC_SampleTime_55Cycles5);
 //	ADC_RegularChannelConfig(ADC_x, ADC_CHANNEL6, 6, ADC_SampleTime_55Cycles5);
 //	
@@ -222,8 +222,8 @@ void  DMA1_Channel2_IRQHandler(void)
 		//中断处理代码
 		  ADC_ConvertedValueLocal[0] =(float) ADC_ConvertedValue[0]/4096*3.3;
 			ADC_ConvertedValueLocal[1] =(float) ADC_ConvertedValue[1]/4096*3.3;
-//			ADC_ConvertedValueLocal[2] =(float) ADC_ConvertedValue[2]/4096*3.3;
-//			ADC_ConvertedValueLocal[3] =(float) ADC_ConvertedValue[3]/4096*3.3;
+			ADC_ConvertedValueLocal[2] =(float) ADC_ConvertedValue[2]/4096*3.3;
+			ADC_ConvertedValueLocal[3] =(float) ADC_ConvertedValue[3]/4096*3.3;
 //			ADC_ConvertedValueLocal[4] =(float) ADC_ConvertedValue[4]/4096*3.3;
 //			ADC_ConvertedValueLocal[5] =(float) ADC_ConvertedValue[5]/4096*3.3;
 //		
