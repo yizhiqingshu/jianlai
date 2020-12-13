@@ -2,7 +2,7 @@
 ..\..\output\control.o: ..\..\User\tft\Control.h
 ..\..\output\control.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\control.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\control.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\control.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\control.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\control.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\control.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h

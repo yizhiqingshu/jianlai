@@ -2,7 +2,7 @@
 ..\..\output\exti_key.o: ..\..\User\exit\exti_key.h
 ..\..\output\exti_key.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\exti_key.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\exti_key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\exti_key.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\exti_key.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\exti_key.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\exti_key.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -30,4 +30,4 @@
 ..\..\output\exti_key.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\exti_key.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\exti_key.o: ..\..\User\usart\bsp_usart.h
-..\..\output\exti_key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\..\output\exti_key.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdio.h

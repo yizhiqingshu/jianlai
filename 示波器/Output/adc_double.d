@@ -2,7 +2,7 @@
 ..\..\output\adc_double.o: ..\..\User\AD_DA\adc_Double.h
 ..\..\output\adc_double.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\adc_double.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\adc_double.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\adc_double.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\adc_double.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\adc_double.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\adc_double.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -30,7 +30,7 @@
 ..\..\output\adc_double.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\adc_double.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\adc_double.o: ..\..\User\usart\bsp_usart.h
-..\..\output\adc_double.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\..\output\adc_double.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\adc_double.o: ..\..\User\AD_DA\DAC.h
 ..\..\output\adc_double.o: ..\..\User\tft\lcd.h
-..\..\output\adc_double.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\adc_double.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdlib.h
