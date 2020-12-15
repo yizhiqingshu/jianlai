@@ -1,8 +1,10 @@
 ..\..\output\bsp_usart.o: ..\..\User\usart\bsp_usart.c
 ..\..\output\bsp_usart.o: ..\..\User\usart\bsp_usart.h
 ..\..\output\bsp_usart.o: ..\..\Libraries\CMSIS\stm32f10x.h
-..\..\output\bsp_usart.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\bsp_usart.o: ..\..\Libraries\FWlib\Include\core_cm3.h
 ..\..\output\bsp_usart.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\bsp_usart.o: ..\..\Libraries\FWlib\Include\core_cmInstr.h
+..\..\output\bsp_usart.o: ..\..\Libraries\FWlib\Include\core_cmFunc.h
 ..\..\output\bsp_usart.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\bsp_usart.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\bsp_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h

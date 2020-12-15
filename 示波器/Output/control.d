@@ -1,8 +1,10 @@
 ..\..\output\control.o: ..\..\User\tft\Control.c
 ..\..\output\control.o: ..\..\User\tft\Control.h
 ..\..\output\control.o: ..\..\Libraries\CMSIS\stm32f10x.h
-..\..\output\control.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\control.o: ..\..\Libraries\FWlib\Include\core_cm3.h
 ..\..\output\control.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\control.o: ..\..\Libraries\FWlib\Include\core_cmInstr.h
+..\..\output\control.o: ..\..\Libraries\FWlib\Include\core_cmFunc.h
 ..\..\output\control.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\control.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\control.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -29,3 +31,5 @@
 ..\..\output\control.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\control.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\control.o: ..\..\Libraries\FWlib\inc\misc.h
+..\..\output\control.o: ..\..\User\tft\lcd.h
+..\..\output\control.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdlib.h

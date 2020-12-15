@@ -1,6 +1,6 @@
 #include "ADC.h"
 #include "bsp_usart.h"
-
+#include "Control.h"
 __IO uint16_t ADC_ConvertedValue_Single;
 
 float ADC_ConvertedValueLocal_Single;   

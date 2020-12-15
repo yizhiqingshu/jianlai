@@ -1,7 +1,9 @@
 ..\..\output\main.o: ..\..\User\main.c
 ..\..\output\main.o: ..\..\Libraries\CMSIS\stm32f10x.h
-..\..\output\main.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\main.o: ..\..\Libraries\FWlib\Include\core_cm3.h
 ..\..\output\main.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\main.o: ..\..\Libraries\FWlib\Include\core_cmInstr.h
+..\..\output\main.o: ..\..\Libraries\FWlib\Include\core_cmFunc.h
 ..\..\output\main.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\main.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -34,5 +36,10 @@
 ..\..\output\main.o: ..\..\User\AD_DA\ADC.h
 ..\..\output\main.o: ..\..\User\AD_DA\DAC.h
 ..\..\output\main.o: ..\..\User\AD_DA\adc_Double.h
+..\..\output\main.o: ..\..\User\tft\Control.h
 ..\..\output\main.o: ..\..\User\tft\lcd.h
 ..\..\output\main.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\main.o: ..\..\Libraries\FWlib\Include\arm_math.h
+..\..\output\main.o: ..\..\Libraries\FWlib\Include\core_cm3.h
+..\..\output\main.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\string.h
+..\..\output\main.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\math.h
