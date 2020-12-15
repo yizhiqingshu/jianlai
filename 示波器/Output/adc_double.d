@@ -33,6 +33,5 @@
 ..\..\output\adc_double.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\adc_double.o: ..\..\User\usart\bsp_usart.h
 ..\..\output\adc_double.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdio.h
-..\..\output\adc_double.o: ..\..\User\AD_DA\DAC.h
 ..\..\output\adc_double.o: ..\..\User\tft\lcd.h
 ..\..\output\adc_double.o: D:\Program_IDE\KEIl_5\ARM\ARMCC\Bin\..\include\stdlib.h

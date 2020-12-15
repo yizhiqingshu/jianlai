@@ -568,11 +568,6 @@
           <GroupName>ADC/DAC</GroupName>
           <Files>
             <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\AD_DA\ADC.c</FilePath>
-            </File>
-            <File>
               <FileName>adc_Double.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\AD_DA\adc_Double.c</FilePath>

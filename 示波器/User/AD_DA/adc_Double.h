@@ -3,7 +3,7 @@
 
 
 #include "stm32f10x.h"
-
+#include "bsp_usart.h"
 // 注意：用作ADC采集的IO必须没有复用，否则采集电压会有影响
 /********************ADC1输入通道（引脚）配置**************************/
 #define    ADC_APBxClock_FUN             RCC_APB2PeriphClockCmd
@@ -19,7 +19,7 @@
 // 所以 PC0 做 ADC 转换通道的时候，结果可能会有误差
 
 // 转换通道个数
-#define    NOFCHANEL										 4
+#define    NOFCHANEL										 2
 
 #define    ADC_PIN1                      GPIO_Pin_0
 #define    ADC_CHANNEL1                  ADC_Channel_10
@@ -45,18 +45,10 @@
 #define    ADC_DMA_CHANNEL               DMA1_Channel1
 #define    ADC_DMA_CLK                   RCC_AHBPeriph_DMA1
 
-#define TIM_x                TIM2
-#define TIM_x_APBxClock_FUN  RCC_APB1PeriphClockCmd
-#define TIM_x_CLK			 RCC_APB1Periph_TIM2
-#define TIM_x_PERIOD     	 999
-#define TIM_x_PSC            7199
-#define TIM_x_PULSE          1000
-
-#define TIM_TRGO ADC_ExternalTrigConv_T2_CC2
 
 /**************************函数声明********************************/
 void ADC_DOUBLE_Init(void);
-void TIMx_ADC_Init(void);
+
 
 #endif /* __ADC_H */
 

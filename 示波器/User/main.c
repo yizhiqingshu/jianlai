@@ -23,14 +23,32 @@ extern __IO float Frequency;
 
 int main(void)
 {	
-	uint32_t i_fft;
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
   USART_Config();
 //  ADVANCE_TIMX_Init();
   ADC_DOUBLE_Init();
 	LCD_Init();
 	POINT_COLOR=BLUE;
 	Frame();
-	
+//	arm_status Status;
+//	arm_rfft_fast_instance_f32 P_S;
+//	Status = arm_rfft_fast_init_f32(&P_S,FFT_LENGTH);
+//	if(Status!=ARM_MATH_SUCCESS)
+//	{
+//	
+//	}
+//	arm_rfft_fast_f32(&P_S,fft_src,fft_dst,FFT_type_fft);
+//	for(i_fft=0;i_fft<FFT_LENGTH;i_fft+=2)
+//	{
+//	fft_fre[i_fft]=sqrt(fft_dst[i_fft] * fft_dst[i_fft] + fft_dst[i_fft+1] * fft_dst[i_fft+1]);
+//	}
+  while(1)
+	{	
+	}	
+}
+void FFT(void)
+{
+	uint32_t i_fft;
 	arm_status Status;
 	arm_rfft_fast_instance_f32 P_S;
 	Status = arm_rfft_fast_init_f32(&P_S,FFT_LENGTH);
@@ -43,9 +61,5 @@ int main(void)
 	{
 	fft_fre[i_fft]=sqrt(fft_dst[i_fft] * fft_dst[i_fft] + fft_dst[i_fft+1] * fft_dst[i_fft+1]);
 	}
-  while(1)
-	{	
-	}	
 }
-
 /*********************************************END OF FILE**********************/

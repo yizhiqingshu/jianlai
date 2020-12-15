@@ -31,7 +31,6 @@
 "..\..\output\exti_key.o"
 "..\..\output\pwm_ic.o"
 "..\..\output\tim.o"
-"..\..\output\adc.o"
 "..\..\output\adc_double.o"
 "..\..\output\dac.o"
 "..\..\output\lcd.o"
