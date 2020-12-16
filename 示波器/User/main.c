@@ -26,7 +26,7 @@ int main(void)
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
   USART_Config();
 //  ADVANCE_TIMX_Init();
-    ADC_DOUBLE_Init();
+  ADC_DOUBLE_Init();
 	LCD_Init();
 	POINT_COLOR=BLUE;
 	Frame();
