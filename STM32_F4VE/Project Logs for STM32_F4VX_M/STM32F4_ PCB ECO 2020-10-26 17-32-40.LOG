@@ -1,0 +1,9 @@
+Added Component: Designator=RESET1(SW-SPST)
+Add component. Clean all parameters for all variants
+Added Component: Designator=SW-PB1(SW-SPST)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=RST Pin=RESET1-1
+Added Pin To Net: NetName=GND Pin=RESET1-2
+Added Pin To Net: NetName=NetR7_2 Pin=SW-PB1-1
+Added Member To Class: ClassName=STM32_F4VX_M Member=Component RESET1 KEY_M
+Added Member To Class: ClassName=STM32_F4VX_M Member=Component SW-PB1 KEY_M

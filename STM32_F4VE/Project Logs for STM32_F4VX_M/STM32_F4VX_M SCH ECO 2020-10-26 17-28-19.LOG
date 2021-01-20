@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=RESET1 Old Footprint=SW-SPST New Footprint=KEY_M
+Change Component Footprint: Designator=SW-PB1 Old Footprint=SW-SPST New Footprint=KEY_M

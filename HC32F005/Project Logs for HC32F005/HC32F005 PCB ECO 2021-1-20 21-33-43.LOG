@@ -1,0 +1,22 @@
+Change Component Footprint: Designator=J1 Old Footprint=DB-1X10 New Footprint=HDR1*10
+Change Component Footprint: Designator=J2 Old Footprint=DB-1X10 New Footprint=HDR1*10
+Added Pin To Net: NetName=P34 Pin=J1-1
+Added Pin To Net: NetName=P35 Pin=J1-2
+Added Pin To Net: NetName=P36 Pin=J1-3
+Added Pin To Net: NetName=P00 Pin=J1-4
+Added Pin To Net: NetName=P01 Pin=J1-5
+Added Pin To Net: NetName=P02 Pin=J1-6
+Added Pin To Net: NetName=GND Pin=J1-7
+Added Pin To Net: NetName=VCAP Pin=J1-8
+Added Pin To Net: NetName=DVDD Pin=J1-9
+Added Pin To Net: NetName=P03 Pin=J1-10
+Added Pin To Net: NetName=P33 Pin=J2-1
+Added Pin To Net: NetName=P32 Pin=J2-2
+Added Pin To Net: NetName=P31 Pin=J2-3
+Added Pin To Net: NetName=P27 Pin=J2-4
+Added Pin To Net: NetName=P26 Pin=J2-5
+Added Pin To Net: NetName=P25 Pin=J2-6
+Added Pin To Net: NetName=P24 Pin=J2-7
+Added Pin To Net: NetName=P22 Pin=J2-8
+Added Pin To Net: NetName=P14 Pin=J2-9
+Added Pin To Net: NetName=P15 Pin=J2-10

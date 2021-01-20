@@ -1,0 +1,5 @@
+Change Component Footprint: Designator=C11 Old Footprint=CC6.56.5 New Footprint=RC0603
+Change Component Footprint: Designator=C12 Old Footprint=CC6.56.5 New Footprint=RC0603
+Change Component Footprint: Designator=Y1 Old Footprint=XTAL_US New Footprint=SW-SPST
+Change Component Comment : Designator=C11 Old Comment=106 New Comment=Cap_
+Change Component Comment : Designator=C12 Old Comment=106 New Comment=Cap_

@@ -1,0 +1,2 @@
+Added Pin To Net: NetName=F_CS Pin=1-77
+Change Net Name : Old Net Name=F_CS New Net Name=PA15/TDI
