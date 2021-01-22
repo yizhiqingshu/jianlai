@@ -1,0 +1,13 @@
+Added Component: Designator=J?(HDR1X4)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=P31 Pin=CN1-2
+Added Pin To Net: NetName=P27 Pin=CN1-3
+Added Pin To Net: NetName=RSTB Pin=J1-4
+Added Pin To Net: NetName=P23 Pin=J2-8
+Added Pin To Net: NetName=P02 Pin=J?-1
+Added Pin To Net: NetName=P01 Pin=J?-2
+Added Pin To Net: NetName=DVDD Pin=J?-3
+Added Pin To Net: NetName=GND Pin=J?-4
+Added Pin To Net: NetName=RSTB Pin=U1-4
+Change Net Name : Old Net Name=RSTB New Net Name=P00
+Added Member To Class: ClassName=HC32F005 Member=Component J? IIC
